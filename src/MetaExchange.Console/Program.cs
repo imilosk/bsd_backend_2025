@@ -1,7 +1,6 @@
 ﻿using System.Globalization;
 using MetaExchange.Core.Extensions;
 using MetaExchange.Core.Services;
-using MetaExchange.Core.Settings;
 using MetaExchange.Domain.Enums;
 using MetaExchange.Domain.Models;
 using Microsoft.Extensions.Configuration;
@@ -19,9 +18,7 @@ var configuration = new ConfigurationBuilder()
 
 var services = new ServiceCollection();
 
-services
-    .AddMetaExchangeCore()
-    .AddAndValidateServiceOptions<OrderBookSettings>(configuration);
+services.AddMetaExchangeCore(configuration);
 
 var serviceProvider = services.BuildServiceProvider();
 

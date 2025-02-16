@@ -4,8 +4,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaExchange.Console", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaExchange.Core", "src\MetaExchange.Core\MetaExchange.Core.csproj", "{4B5A3C72-3129-473D-8D7A-E1984758964B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaExchange.Api", "src\MetaExchange.Api\MetaExchange.Api.csproj", "{6534F81B-F107-48F3-B561-7A6C26265519}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaExchange.Domain", "src\MetaExchange.Domain\MetaExchange.Domain.csproj", "{6DB61338-C945-4B02-B665-71B6EB1A130D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaExchange.Infrastructure", "src\MetaExchange.Infrastructure\MetaExchange.Infrastructure.csproj", "{3B163D19-505A-48DF-B2A7-4E00CE298EF2}"
@@ -13,6 +11,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaExchange.UnitTests", "tests\MetaExchange.UnitTests\MetaExchange.UnitTests.csproj", "{977DA941-B4C1-40DE-8906-B32630A62A91}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaExchange.Settings", "src\MetaExchange.Settings\MetaExchange.Settings.csproj", "{E8A406BF-F2E7-4EBE-B0A2-8BC742893681}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaExchange.Api", "src\MetaExchange.Api\MetaExchange.Api.csproj", "{56333D2D-1A4F-44C5-BEEA-F370545F6220}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,10 +28,6 @@ Global
 		{4B5A3C72-3129-473D-8D7A-E1984758964B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B5A3C72-3129-473D-8D7A-E1984758964B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B5A3C72-3129-473D-8D7A-E1984758964B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6534F81B-F107-48F3-B561-7A6C26265519}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6534F81B-F107-48F3-B561-7A6C26265519}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6534F81B-F107-48F3-B561-7A6C26265519}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6534F81B-F107-48F3-B561-7A6C26265519}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6DB61338-C945-4B02-B665-71B6EB1A130D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6DB61338-C945-4B02-B665-71B6EB1A130D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DB61338-C945-4B02-B665-71B6EB1A130D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -48,5 +44,9 @@ Global
 		{E8A406BF-F2E7-4EBE-B0A2-8BC742893681}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8A406BF-F2E7-4EBE-B0A2-8BC742893681}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8A406BF-F2E7-4EBE-B0A2-8BC742893681}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56333D2D-1A4F-44C5-BEEA-F370545F6220}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56333D2D-1A4F-44C5-BEEA-F370545F6220}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56333D2D-1A4F-44C5-BEEA-F370545F6220}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56333D2D-1A4F-44C5-BEEA-F370545F6220}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

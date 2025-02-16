@@ -1,4 +1,5 @@
 using MetaExchange.Core.Services;
+using MetaExchange.Core.Settings;
 using MetaExchange.Infrastructure.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,9 +8,13 @@ namespace MetaExchange.Core.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddMetaExchangeCore(this IServiceCollection serviceCollection)
+    public static IServiceCollection AddMetaExchangeCore(
+        this IServiceCollection serviceCollection,
+        IConfiguration configuration
+    )
     {
         serviceCollection
+            .AddAndValidateServiceOptions<OrderBookSettings>(configuration)
             .AddScoped<IOrderBookService, OrderBookService>()
             .AddScoped<IOrderExecutionService, OrderExecutionService>()
             .AddScoped<IExchangeBalanceRepository, ExchangeBalanceRepository>();

@@ -1,0 +1,11 @@
+### Get Best Execution Plan (Buy)
+GET http://localhost:5066/api/order-execution/best-execution?orderType=Buy&amount=1.5
+Accept: application/json
+
+### Get Best Execution Plan (Sell)
+GET http://localhost:5066/api/order-execution/best-execution?orderType=Sell&amount=2.0
+Accept: application/json
+
+### Invalid Order Type (Error Case)
+GET http://localhost:5066/api/order-execution/best-execution?orderType=Invalid&amount=1.0
+Accept: application/json
