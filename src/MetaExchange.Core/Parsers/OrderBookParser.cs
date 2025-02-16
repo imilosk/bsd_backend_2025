@@ -3,7 +3,7 @@ using MetaExchange.Domain.Models;
 
 namespace MetaExchange.Core.Parsers;
 
-public class OrderBookParser
+public static class OrderBookParser
 {
     public static List<OrderBook> Parse(string path)
     {
