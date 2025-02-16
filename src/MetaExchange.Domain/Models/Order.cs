@@ -9,6 +9,7 @@ public class OrderEntry
 
 public class Order
 {
+    public string Exchange { get; set; } = string.Empty;
     public OrderType Type { get; set; }
     public OrderKind Kind { get; set; }
     public decimal Amount { get; set; }

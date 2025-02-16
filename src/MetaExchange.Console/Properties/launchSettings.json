@@ -4,6 +4,7 @@
     "MetaExchange.Console": {
       "commandName": "Project",
       "dotnetRunMessages": true,
+      "commandLineArgs": "BUY 2",
       "environmentVariables": {
         "DOTNET_ENVIRONMENT": "Development"
       }
