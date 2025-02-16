@@ -1,9 +1,74 @@
-﻿namespace MetaExchange.UnitTests;
+﻿using MetaExchange.Core.Parsers;
+using MetaExchange.Core.Services;
+using MetaExchange.Domain.Enums;
+using MetaExchange.Domain.Models;
+using MetaExchange.Infrastructure.Data;
+using Moq;
+
+namespace MetaExchange.UnitTests;
 
 public class OrderExecutionServiceTests
 {
-    [Fact]
-    public void Test1()
+    private const string TestDataPath = "../../../../../.test-data/order_books_data.json";
+
+    private readonly OrderExecutionService _orderExecutionService;
+
+    public OrderExecutionServiceTests()
     {
+        Mock<IOrderBookService> mockOrderBookService = new();
+        Mock<IExchangeBalanceRepository> mockExchangeBalanceRepository = new();
+        _orderExecutionService = new OrderExecutionService(
+            mockOrderBookService.Object,
+            mockExchangeBalanceRepository.Object
+        );
+
+        var orderBooks = LoadOrderBooksFromFile();
+
+        mockOrderBookService
+            .Setup(s => s.GetAllOrderBooks())
+            .Returns(orderBooks);
+
+        mockExchangeBalanceRepository
+            .Setup(s => s.GetBalance(It.IsAny<string>()))
+            .Returns(new Balance
+            {
+                Eur = 10000m,
+                Btc = 5m
+            });
+    }
+
+    private static List<OrderBook> LoadOrderBooksFromFile()
+    {
+        return OrderBookParser.Parse(TestDataPath);
+    }
+
+    [Fact]
+    public void GetBestExecutionPlan_ShouldReturnCorrectBuyOrders()
+    {
+        var result = _orderExecutionService.GetBestExecutionPlan(OrderType.Buy, 1.5m);
+
+        Assert.NotNull(result);
+        Assert.NotEmpty(result);
+        Assert.Equal(OrderType.Buy, result.First().Type);
+        Assert.True(result.Sum(o => o.Amount) >= 1.5m);
+    }
+
+    [Fact]
+    public void GetBestExecutionPlan_ShouldReturnCorrectSellOrders()
+    {
+        var result = _orderExecutionService.GetBestExecutionPlan(OrderType.Sell, 3m);
+
+        Assert.NotNull(result);
+        Assert.NotEmpty(result);
+        Assert.Equal(OrderType.Sell, result.First().Type);
+        Assert.True(result.Sum(o => o.Amount) >= 3m);
+    }
+
+    [Fact]
+    public void GetBestExecutionPlan_ShouldThrowExceptionForUnknownOrderType()
+    {
+        Assert.Throws<Exception>(() =>
+            _orderExecutionService.GetBestExecutionPlan((OrderType)999, 1.0m)
+        );
     }
 }
