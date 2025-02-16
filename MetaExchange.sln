@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaExchange.Domain", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaExchange.Infrastructure", "src\MetaExchange.Infrastructure\MetaExchange.Infrastructure.csproj", "{3B163D19-505A-48DF-B2A7-4E00CE298EF2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaExchange.UnitTests", "tests\MetaExchange.UnitTests\MetaExchange.UnitTests.csproj", "{977DA941-B4C1-40DE-8906-B32630A62A91}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{3B163D19-505A-48DF-B2A7-4E00CE298EF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B163D19-505A-48DF-B2A7-4E00CE298EF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B163D19-505A-48DF-B2A7-4E00CE298EF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{977DA941-B4C1-40DE-8906-B32630A62A91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{977DA941-B4C1-40DE-8906-B32630A62A91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{977DA941-B4C1-40DE-8906-B32630A62A91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{977DA941-B4C1-40DE-8906-B32630A62A91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
