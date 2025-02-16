@@ -1,16 +1,29 @@
 ﻿using System.Globalization;
 using MetaExchange.Core.Extensions;
 using MetaExchange.Core.Services;
+using MetaExchange.Core.Settings;
 using MetaExchange.Domain.Enums;
+using MetaExchange.Domain.Models;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 // Force decimal point
 CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
 
-var serviceCollection = new ServiceCollection();
-serviceCollection.AddMetaExchangeCore();
-var serviceProvider = serviceCollection.BuildServiceProvider();
+var configuration = new ConfigurationBuilder()
+    .AddJsonFile("appsettings.json")
+    .AddJsonFile("secrets.json", true)
+    .AddEnvironmentVariables()
+    .Build();
+
+var services = new ServiceCollection();
+
+services
+    .AddMetaExchangeCore()
+    .AddAndValidateServiceOptions<OrderBookSettings>(configuration);
+
+var serviceProvider = services.BuildServiceProvider();
 
 var orderExecutionService = serviceProvider.GetRequiredService<IOrderExecutionService>();
 
@@ -20,17 +33,21 @@ if (!TryParseArgs(args, out var parsedArgs))
 }
 
 var bestExecutionPlan = orderExecutionService.GetBestExecutionPlan(parsedArgs.orderType, parsedArgs.amount);
-
-Console.WriteLine("Best execution plan: ");
-foreach (var executionPlan in bestExecutionPlan)
-{
-    Console.WriteLine(
-        $"Exchange: {executionPlan.Exchange}, amount: {executionPlan.Amount}, price: {executionPlan.Price}"
-    );
-}
+PrintExecutionPlan(bestExecutionPlan);
 
 return 0;
 
+
+static void PrintExecutionPlan(List<Order> executionPlans)
+{
+    Console.WriteLine("Best execution plan: ");
+    foreach (var order in executionPlans)
+    {
+        Console.WriteLine(
+            $"Exchange: {order.Exchange}, amount: {order.Amount}, price: {order.Price}"
+        );
+    }
+}
 
 static bool TryParseArgs(string[] args, out (OrderType orderType, decimal amount) parsedArgs)
 {
