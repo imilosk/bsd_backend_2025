@@ -1,7 +1,12 @@
-﻿using MetaExchange.Core.Extensions;
+﻿using System.Globalization;
+using MetaExchange.Core.Extensions;
 using MetaExchange.Core.Services;
 using MetaExchange.Domain.Enums;
 using Microsoft.Extensions.DependencyInjection;
+
+// Force decimal point
+CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
 
 var serviceCollection = new ServiceCollection();
 serviceCollection.AddMetaExchangeCore();

@@ -43,7 +43,7 @@ public class OrderExecutionService : IOrderExecutionService
         throw new Exception("Unknown order type");
     }
 
-    private static List<Order> ExecuteExecutionPlan(
+    private List<Order> ExecuteExecutionPlan(
         IOrderedEnumerable<OrderEntry> sortedOrders,
         OrderType orderType,
         decimal amount
@@ -59,15 +59,48 @@ public class OrderExecutionService : IOrderExecutionService
                 break;
             }
 
-            var volume = Math.Min(order.Order.Amount, remaining);
+            var balance = _exchangeBalanceRepository.GetBalance(order.Order.Exchange);
+
+            var maxVolume = order.Order.Amount;
+
+            switch (orderType)
+            {
+                case OrderType.Buy:
+                {
+                    var affordableVolume = balance.Eur / order.Order.Price;
+                    maxVolume = Math.Min(maxVolume, affordableVolume);
+                    break;
+                }
+                case OrderType.Sell:
+                    maxVolume = Math.Min(maxVolume, balance.Btc);
+                    break;
+            }
+
+            if (maxVolume <= 0)
+            {
+                continue;
+            }
+
+            var volumeToFill = Math.Min(maxVolume, remaining);
+
+            if (orderType == OrderType.Buy)
+            {
+                balance.Eur -= volumeToFill * order.Order.Price;
+            }
+            else
+            {
+                balance.Btc -= volumeToFill;
+            }
+
             orderPlan.Add(new Order
             {
                 Exchange = order.Order.Exchange,
                 Price = order.Order.Price,
-                Amount = volume,
+                Amount = volumeToFill,
                 Type = orderType
             });
-            remaining -= volume;
+
+            remaining -= volumeToFill;
         }
 
         return orderPlan;
