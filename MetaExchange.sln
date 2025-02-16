@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaExchange.Console", "src\MetaExchange.Console\MetaExchange.Console.csproj", "{174371A2-FDCC-4BDC-935B-D30EB0DF8B6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaExchange.Core", "src\MetaExchange.Core\MetaExchange.Core.csproj", "{4B5A3C72-3129-473D-8D7A-E1984758964B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaExchange.Api", "src\MetaExchange.Api\MetaExchange.Api.csproj", "{6534F81B-F107-48F3-B561-7A6C26265519}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaExchange.Domain", "src\MetaExchange.Domain\MetaExchange.Domain.csproj", "{6DB61338-C945-4B02-B665-71B6EB1A130D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{174371A2-FDCC-4BDC-935B-D30EB0DF8B6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{174371A2-FDCC-4BDC-935B-D30EB0DF8B6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{174371A2-FDCC-4BDC-935B-D30EB0DF8B6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{174371A2-FDCC-4BDC-935B-D30EB0DF8B6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B5A3C72-3129-473D-8D7A-E1984758964B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B5A3C72-3129-473D-8D7A-E1984758964B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B5A3C72-3129-473D-8D7A-E1984758964B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B5A3C72-3129-473D-8D7A-E1984758964B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6534F81B-F107-48F3-B561-7A6C26265519}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6534F81B-F107-48F3-B561-7A6C26265519}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6534F81B-F107-48F3-B561-7A6C26265519}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6534F81B-F107-48F3-B561-7A6C26265519}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DB61338-C945-4B02-B665-71B6EB1A130D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DB61338-C945-4B02-B665-71B6EB1A130D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DB61338-C945-4B02-B665-71B6EB1A130D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DB61338-C945-4B02-B665-71B6EB1A130D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
