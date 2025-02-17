@@ -1,4 +1,5 @@
 using MetaExchange.Core.Extensions;
+using MetaExchange.Core.Services;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,10 @@ builder.Services
 builder.Services.AddControllers();
 
 var app = builder.Build();
+
+// Preload order books on startup
+var orderBookService = app.Services.GetRequiredService<IOrderBookService>();
+await ((OrderBookService)orderBookService).GetAllOrderBooks();
 
 if (app.Environment.IsDevelopment())
 {
