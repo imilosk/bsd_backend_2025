@@ -7,14 +7,23 @@ namespace MetaExchange.Core.Services;
 public class OrderBookService : IOrderBookService
 {
     private readonly OrderBookSettings _orderBookSettings;
+    private static List<OrderBook>? _orderBooksCache;
 
     public OrderBookService(OrderBookSettings orderBookSettings)
     {
         _orderBookSettings = orderBookSettings;
     }
 
-    public Task<List<OrderBook>> GetAllOrderBooks()
+    public async Task<List<OrderBook>> GetAllOrderBooks()
     {
-        return OrderBookParser.Parse(_orderBookSettings.OrderBooksPath);
+        if (_orderBooksCache is not null)
+        {
+            return _orderBooksCache;
+        }
+
+        var orderBooks = await OrderBookParser.Parse(_orderBookSettings.OrderBooksPath);
+        _orderBooksCache = orderBooks;
+
+        return orderBooks;
     }
 }
