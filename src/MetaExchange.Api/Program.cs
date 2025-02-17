@@ -3,8 +3,12 @@ using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var environment = builder.Environment.EnvironmentName;
+
 var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
+    .AddJsonFile($"appsettings.{environment}.json", true)
+    .AddJsonFile($"secrets.{environment}.json", true)
     .AddJsonFile("secrets.json", true)
     .AddEnvironmentVariables()
     .Build();

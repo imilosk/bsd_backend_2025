@@ -10,9 +10,12 @@ using Microsoft.Extensions.DependencyInjection;
 CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
 
+var environment = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT");
+
 var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
-    .AddJsonFile("secrets.json", true)
+    .AddJsonFile($"appsettings.{environment}.json", true)
+    .AddJsonFile($"secrets.{environment}.json", true)
     .AddEnvironmentVariables()
     .Build();
 
