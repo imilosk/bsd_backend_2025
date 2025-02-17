@@ -9,7 +9,7 @@ namespace MetaExchange.UnitTests;
 
 public class OrderExecutionServiceTests
 {
-    private const string TestDataPath = "../../../../../.test-data/order_books_data.json";
+    private const string TestDataPath = "../../../../../.test-data/order_books_data_short.json";
 
     private readonly OrderExecutionService _orderExecutionService;
 
