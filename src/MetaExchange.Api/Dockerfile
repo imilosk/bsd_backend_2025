@@ -20,4 +20,7 @@ RUN dotnet publish "MetaExchange.Api.csproj" -c $BUILD_CONFIGURATION -o /app/pub
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+COPY "../../.test-data/order_books_data.json" "/data/"
+
 ENTRYPOINT ["dotnet", "MetaExchange.Api.dll"]
