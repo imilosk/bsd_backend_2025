@@ -5,7 +5,7 @@ namespace MetaExchange.Core.Parsers;
 
 public static class OrderBookParser
 {
-    public static List<OrderBook> Parse(string path)
+    public static async Task<List<OrderBook>> Parse(string path)
     {
         var reader = new StreamReader(path);
         var allOrderBooks = new List<OrderBook>();
@@ -13,7 +13,7 @@ public static class OrderBookParser
 
         while (!reader.EndOfStream)
         {
-            var line = reader.ReadLine() ?? string.Empty;
+            var line = await reader.ReadLineAsync() ?? string.Empty;
             var parts = line.Split();
 
             var orderBook = JsonSerializer.Deserialize<OrderBook>(parts[1]) ??

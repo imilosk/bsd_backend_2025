@@ -4,5 +4,5 @@ namespace MetaExchange.Core.Services;
 
 public interface IOrderBookService
 {
-    List<OrderBook> GetAllOrderBooks();
+    Task<List<OrderBook>> GetAllOrderBooks();
 }

@@ -18,9 +18,9 @@ public class OrderExecutionService : IOrderExecutionService
         _exchangeBalanceRepository = exchangeBalanceRepository;
     }
 
-    public List<Order> GetBestExecutionPlan(OrderType orderType, decimal amount)
+    public async Task<List<Order>> GetBestExecutionPlan(OrderType orderType, decimal amount)
     {
-        var orderBooks = _orderBookService.GetAllOrderBooks();
+        var orderBooks = await _orderBookService.GetAllOrderBooks();
 
         if (orderType == OrderType.Buy)
         {

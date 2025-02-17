@@ -1,6 +1,5 @@
 using MetaExchange.Core.Services;
 using MetaExchange.Domain.Enums;
-using MetaExchange.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MetaExchange.Api.Controllers;
@@ -17,8 +16,10 @@ public class OrderExecutionController : Controller
     }
 
     [HttpGet("best-execution")]
-    public ActionResult<List<Order>> GetBestExecution([FromQuery] OrderType orderType, [FromQuery] decimal amount)
+    public async Task<IActionResult> GetBestExecution([FromQuery] OrderType orderType, [FromQuery] decimal amount)
     {
-        return _orderExecutionService.GetBestExecutionPlan(orderType, amount);
+        var result = await _orderExecutionService.GetBestExecutionPlan(orderType, amount);
+
+        return Ok(result);
     }
 }

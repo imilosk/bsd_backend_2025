@@ -29,7 +29,7 @@ if (!TryParseArgs(args, out var parsedArgs))
     return 1;
 }
 
-var bestExecutionPlan = orderExecutionService.GetBestExecutionPlan(parsedArgs.orderType, parsedArgs.amount);
+var bestExecutionPlan = await orderExecutionService.GetBestExecutionPlan(parsedArgs.orderType, parsedArgs.amount);
 PrintExecutionPlan(bestExecutionPlan);
 
 return 0;

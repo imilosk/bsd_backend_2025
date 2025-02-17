@@ -37,15 +37,15 @@ public class OrderExecutionServiceTests
             });
     }
 
-    private static List<OrderBook> LoadOrderBooksFromFile()
+    private static async Task<List<OrderBook>> LoadOrderBooksFromFile()
     {
-        return OrderBookParser.Parse(TestDataPath);
+        return await OrderBookParser.Parse(TestDataPath);
     }
 
     [Fact]
-    public void GetBestExecutionPlan_ShouldReturnCorrectBuyOrders()
+    public async Task GetBestExecutionPlan_ShouldReturnCorrectBuyOrders()
     {
-        var result = _orderExecutionService.GetBestExecutionPlan(OrderType.Buy, 1.5m);
+        var result = await _orderExecutionService.GetBestExecutionPlan(OrderType.Buy, 1.5m);
 
         Assert.NotNull(result);
         Assert.NotEmpty(result);
@@ -54,9 +54,9 @@ public class OrderExecutionServiceTests
     }
 
     [Fact]
-    public void GetBestExecutionPlan_ShouldReturnCorrectSellOrders()
+    public async Task GetBestExecutionPlan_ShouldReturnCorrectSellOrders()
     {
-        var result = _orderExecutionService.GetBestExecutionPlan(OrderType.Sell, 3m);
+        var result = await _orderExecutionService.GetBestExecutionPlan(OrderType.Sell, 3m);
 
         Assert.NotNull(result);
         Assert.NotEmpty(result);
@@ -65,10 +65,10 @@ public class OrderExecutionServiceTests
     }
 
     [Fact]
-    public void GetBestExecutionPlan_ShouldThrowExceptionForUnknownOrderType()
+    public async Task GetBestExecutionPlan_ShouldThrowExceptionForUnknownOrderType()
     {
-        Assert.Throws<Exception>(() =>
-            _orderExecutionService.GetBestExecutionPlan((OrderType)999, 1.0m)
+        await Assert.ThrowsAsync<Exception>(async () =>
+            await _orderExecutionService.GetBestExecutionPlan((OrderType)999, 1.0m)
         );
     }
 }

@@ -5,5 +5,5 @@ namespace MetaExchange.Core.Services;
 
 public interface IOrderExecutionService
 {
-    List<Order> GetBestExecutionPlan(OrderType orderType, decimal amount);
+    Task<List<Order>> GetBestExecutionPlan(OrderType orderType, decimal amount);
 }

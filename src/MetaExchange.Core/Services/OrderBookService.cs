@@ -13,7 +13,7 @@ public class OrderBookService : IOrderBookService
         _orderBookSettings = orderBookSettings;
     }
 
-    public List<OrderBook> GetAllOrderBooks()
+    public Task<List<OrderBook>> GetAllOrderBooks()
     {
         return OrderBookParser.Parse(_orderBookSettings.OrderBooksPath);
     }
